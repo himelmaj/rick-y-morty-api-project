@@ -1,17 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&family=Rubik&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+
 :root {
   --primary-color: beige;
   --secondary-color: #0e0f10;
+  --font-roboto: 'Roboto', sans-serif;
+  --font-rubik: 'Rubik', sans-serif;
 }
 body {
   color: var(--primary-color);
   background-color: var(--secondary-color);
 }
+
 @layer components {
   .navlink-design {
     @apply px-3 w-40 mx-10 py-2 inline-block rounded-md bg-zinc-800 hover:bg-zinc-700 font-bold text-center;
+  }
+  .character-card {
+    @apply  p-4 font-bold text-xl;
+    font-family: var(--font-rubik);
+  }
+  .pagination-button {
+    @apply bg-gray-500 my-5 mx-2 px-3 py-2 rounded-full inline-block hover:bg-gray-600 hover:cursor-pointer text-zinc-950 font-bold text-center;
   }
 }

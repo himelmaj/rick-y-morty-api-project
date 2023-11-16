@@ -1,8 +1,12 @@
 import { useState, useEffect } from "react";
 import { getCharacters } from "../api/rickymorty.api";
 import { getColors } from "../api/jsonplaceholder.api";
+import Pagination from "../components/Pagination";
+
 import next_icon from "../assets/next_icon.svg";
 import prev_icon from "../assets/prev_icon.svg";
+import heart_icon from "../assets/heart_icon.svg";
+import skull_icon from "../assets/skull_icon.svg";
 
 export function CharactersList() {
   const [characters, setCharacters] = useState([]);
@@ -17,18 +21,15 @@ export function CharactersList() {
       setCharacters(res.results);
       setMaxPage(res.info.pages);
     }
-
+    loadCharacters();
     async function loadColors() {
       const res = await getColors();
       setColors(res);
     }
-
-    loadCharacters();
     loadColors();
   }, [page]);
-  console.log(maxPage);
-  // console.log(characters);
-  // console.log(colors);
+  console.log(characters);
+  console.log(colors);
   return (
     <main>
       <section className="grid md:grid-cols-3 xl:grid-cols-4 sm:grid-cols-1 gap-3 ">
@@ -37,38 +38,31 @@ export function CharactersList() {
             key={character.id}
             className="bg-zinc-800 p-3 hover:bg-zinc-700 hover:cursor-pointer rounded-lg flex flex-col justify-between items-center"
           >
-            <div className="text-center">
-              <h1 className="text-xl font-bold my-4">{character.name}</h1>
+            <div className="flex flex-wrap">
+              <img
+                src={character.status === "Alive" ? heart_icon : skull_icon}
+                alt="status Icon"
+              />
+              <h3 className="character-card">{character.name}</h3>
             </div>
             <div className="mb-4">
               <img
                 src={character.image}
                 alt={character.name}
                 className="rounded-full"
+                style={{
+                  borderColor: `#${colors[character.id - 1]}`,
+                  borderWidth: "5px",
+                }}
               />
             </div>
           </article>
         ))}
       </section>
       <section className="grid grid-cols-2 place-items-center">
-      <button
-        className="bg-gray-500 my-5 mx-2 px-3 py-2 rounded-full inline-block hover:bg-gray-600 hover:cursor-pointer text-zinc-950 font-bold text-center"
-        onClick={() => {
-          page > minPage ? setPage(page - 1) : null;
-        }}
-      >
-        <img src={next_icon} className="" />
-      </button>
-      <button
-        className="bg-gray-500 my-5 mx-2 px-3 py-2 rounded-full inline-block hover:bg-gray-600 hover:cursor-pointer text-zinc-950 font-bold text-center"
-        onClick={() => {
-          page < maxPage ? setPage(page + 1) : null;
-        }}
-      >
-        <img src={prev_icon} />
-      </button>
+        <Pagination page={page} minPage={minPage} maxPage={maxPage} setPage={setPage} prev_icon={prev_icon} next_icon={next_icon}
+        />
       </section>
-
     </main>
   );
 }
