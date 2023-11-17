@@ -6,7 +6,7 @@ export function Navigation() {
       <NavLink className="navlink-design" to={"/"}>
         <h3>Home</h3>
       </NavLink>
-      <NavLink className="navlink-design" to={"/characters"}>
+      <NavLink className="navlink-design" to={"/characters/page/1"}>
         <h3>Characters</h3>
       </NavLink>
       <NavLink className="navlink-design" to={"/locations"}>

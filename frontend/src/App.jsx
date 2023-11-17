@@ -13,7 +13,7 @@ function App() {
         <Navigation />
         <Routes>
           <Route path="/" element={<Navigate to="/index" />}></Route>
-          <Route path="/characters" element={<Characters />}></Route>
+          <Route path="/characters/page/:page" element={<Characters />}></Route>
           <Route path="/episodes" element={<Episodes />}></Route>
           <Route path="/locations" element={<Locations />}></Route>
           <Route path="/index" element={<Index />}></Route>
