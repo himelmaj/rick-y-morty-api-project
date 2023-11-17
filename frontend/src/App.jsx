@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { Navigation } from "./components/Navigation";
-
+import  Page404  from "./pages/Page404";
 import { Characters } from "./pages/Characters";
 import { Locations } from "./pages/Locations";
 import { Episodes } from "./pages/Episodes";
@@ -13,6 +13,10 @@ function App() {
         <Navigation />
         <Routes>
           <Route path="/" element={<Navigate to="/index" />}></Route>
+
+          <Route path="*" element={<Navigate to="/404" />}></Route>
+          <Route path="/404" element={<Page404/>}></Route>
+
           <Route path="/characters/page/:page" element={<Characters />}></Route>
           <Route path="/episodes" element={<Episodes />}></Route>
           <Route path="/locations" element={<Locations />}></Route>
