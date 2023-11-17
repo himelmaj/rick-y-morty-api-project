@@ -1,8 +1,6 @@
 import skull_icon from "../assets/skull_icon.svg";
 import heart_icon from "../assets/heart_icon.svg";
 
-
-
 export default function CharactersCard({ character, colors }) {
   return (
     <article className="bg-zinc-800 p-3 hover:bg-zinc-700 hover:cursor-pointer rounded-lg flex flex-col justify-between items-center">

@@ -2,9 +2,9 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { getCharacters } from "../api/rickymorty.api";
 import { getColors } from "../api/jsonplaceholder.api";
-
 import Pagination from "../components/Pagination";
 import CharacterCard from "../components/CharactersCard";
+
 
 export function CharactersList() {
   const { page } = useParams();
@@ -37,7 +37,10 @@ export function CharactersList() {
         ))}
       </section>
       <section className="grid grid-cols-2 place-items-center">
-        <Pagination page={parseInt(page, 10)} maxPage={maxPage} />
+        <Pagination
+          page={parseInt(page, 10)}
+          maxPage={maxPage}
+        />
       </section>
     </main>
   );
