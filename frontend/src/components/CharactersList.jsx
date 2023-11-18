@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams, useSearchParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { getCharacters } from "../api/rickymorty.api";
 import { getColors } from "../api/jsonplaceholder.api";
 import Pagination from "../components/Pagination";
@@ -11,9 +11,6 @@ export function CharactersList() {
   const [characters, setCharacters] = useState([]);
   const [colors, setColors] = useState([]);
   const [maxPage, setMaxPage] = useState(0);
-
-  let [searchParams, setSearchParams] = useSearchParams();
-  let [query, setQuery] = useState( searchParams.get("query"));
 
   useEffect(() => {
     async function loadCharacters() {
@@ -30,9 +27,6 @@ export function CharactersList() {
   }, [page]);
   return (
     <main>
-      {/* <form onSubmit={() => searchParams({query})}>
-        <input type="text" placeholder="Search" className="my-3 rounded-sm text-zinc-800" value={query} onChange={setQuery}/>
-      </form> */}
       <section className="grid md:grid-cols-3 xl:grid-cols-4 sm:grid-cols-1 gap-3 ">
         {characters.map((character) => (
           <CharacterCard

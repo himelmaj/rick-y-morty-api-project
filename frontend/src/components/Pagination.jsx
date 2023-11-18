@@ -10,7 +10,7 @@ export default function Pagination({ page, maxPage }) {
           className="pagination-button"
           onClick={() => navigate(`/characters/page/${page - 1}`)}
         >
-          <img src={next_icon} alt="Next" />
+          <img src={prev_icon} alt="Previous" />
         </button>
       ) : (
         <div className="hidden md:block"></div>
@@ -21,7 +21,7 @@ export default function Pagination({ page, maxPage }) {
           className={"pagination-button"}
           onClick={() => navigate(`/characters/page/${page + 1}`)}
         >
-          <img src={prev_icon} alt="Previous" />
+          <img src={next_icon} alt="Next" />
         </button>
       )}
     </>
