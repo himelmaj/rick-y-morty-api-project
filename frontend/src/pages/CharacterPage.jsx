@@ -6,6 +6,9 @@ import skull_icon from "../assets/skull_icon.svg";
 import heart_icon from "../assets/heart_icon.svg";
 import { BsQuestionDiamondFill } from "react-icons/bs";
 import { MdOutlineRecordVoiceOver } from "react-icons/md";
+import CircularProgress from "@mui/material/CircularProgress";
+import Box from "@mui/material/Box";
+
 export function CharacterPage() {
   const { id } = useParams();
   const [character, setCharacter] = useState({});
@@ -22,7 +25,7 @@ export function CharacterPage() {
 
     async function fetchColors() {
       try {
-        const res = await getColorsById(id - 1);
+        const res = await getColorsById(id);
         setColors(res);
       } catch (error) {
         console.error("Error fetching colors:", error);
@@ -56,10 +59,12 @@ export function CharacterPage() {
   };
 
   if (!character || !character.name) {
-    return <div>Loading...</div>;
+    return (
+      <Box sx={{ display: "flex", alignItems: 'center' }}>
+        <CircularProgress />
+      </Box>
+    );
   }
-  console.log(character);
-  console.log(colors);
   return (
     <main>
       <section className="flex flex-col justify-center items-center">
@@ -87,8 +92,12 @@ export function CharacterPage() {
         {character.gender.length > 0 && <h4>Gender: {character.gender}</h4>}
         {character.species.length > 0 && <h4>Species: {character.species}</h4>}
         {character.type.length > 0 && <h4>Type: {character.type}</h4>}
-        {character.location.name.length > 0 && <h4>Location: {character.location.name}</h4>}
-        {character.origin.name.length > 0 && <h4>Origin: {character.origin.name}</h4>}
+        {character.location.name.length > 0 && (
+          <h4>Location: {character.location.name}</h4>
+        )}
+        {character.origin.name.length > 0 && (
+          <h4>Origin: {character.origin.name}</h4>
+        )}
         <h4>Total episode appearances: {character.episode?.length}</h4>
         <button onClick={handleSpeech}>
           <MdOutlineRecordVoiceOver className="text-white mt-5 text-3xl" />

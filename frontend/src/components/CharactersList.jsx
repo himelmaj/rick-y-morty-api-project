@@ -10,6 +10,7 @@ export function CharactersList() {
   const { page } = useParams();
   const [characters, setCharacters] = useState([]);
   const [colors, setColors] = useState([]);
+  const [minPage, setMinPage] = useState(0);
   const [maxPage, setMaxPage] = useState(0);
 
   useEffect(() => {
@@ -19,11 +20,6 @@ export function CharactersList() {
       setMaxPage(res.info.pages);
     }
     loadCharacters();
-    async function loadColors() {
-      const res = await getColors();
-      setColors(res);
-    }
-    loadColors();
   }, [page]);
   return (
     <main>
@@ -32,7 +28,6 @@ export function CharactersList() {
           <CharacterCard
             key={character.id}
             character={character}
-            colors={colors}
           />
         ))}
       </section>
