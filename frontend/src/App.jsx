@@ -6,6 +6,7 @@ import { Locations } from "./pages/Locations";
 import { Episodes } from "./pages/Episodes";
 import { Index } from "./pages/Index";
 import { CharacterPage } from "./pages/CharacterPage";
+import { Footer } from "./components/Footer";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route path="/locations" element={<Locations />}></Route>
           <Route path="/index" element={<Index />}></Route>
         </Routes>
+        <Footer />
       </div>
     </BrowserRouter>
   );
