@@ -90,7 +90,6 @@ export function CharacterPage() {
         {character.location.name.length > 0 && <h4>Location: {character.location.name}</h4>}
         {character.origin.name.length > 0 && <h4>Origin: {character.origin.name}</h4>}
         <h4>Total episode appearances: {character.episode?.length}</h4>
-        <h4>Total episode appearances: {character.episode?.length}</h4>
         <button onClick={handleSpeech}>
           <MdOutlineRecordVoiceOver className="text-white mt-5 text-3xl" />
         </button>
