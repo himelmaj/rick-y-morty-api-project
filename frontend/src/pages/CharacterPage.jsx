@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Navigation } from "../components/Navigation";
 import { useParams } from "react-router-dom";
 import { getCharacterById } from "../api/rickymorty.api";
 import { getColorsById } from "../api/jsonplaceholder.api";
@@ -66,7 +67,9 @@ export function CharacterPage() {
     );
   }
   return (
-    <main>
+    <>
+    <Navigation />
+        <main>
       <section className="flex flex-col justify-center items-center">
         <h1 className="text-3xl font-bold mb-4">{character.name}</h1>
         <img
@@ -104,5 +107,7 @@ export function CharacterPage() {
         </button>
       </section>
     </main>
+    </>
+
   );
 }

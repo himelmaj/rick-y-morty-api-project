@@ -12,9 +12,9 @@ function App() {
   return (
     <BrowserRouter>
       <div className="container mx-auto">
-        <Navigation />
+        {/* <Navigation /> */}
         <Routes>
-          <Route path="/" element={<Navigate to="/index" />}></Route>
+          <Route path="/" element={<Navigate to="/characters/page/1" />}></Route>
 
           <Route path="*" element={<Navigate to="/404" />}></Route>
           <Route path="/404" element={<Page404 />}></Route>
