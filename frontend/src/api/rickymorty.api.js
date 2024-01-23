@@ -21,3 +21,16 @@ export async function getCharacterById(id) {
     throw error;
   }
 }
+
+
+export async function searchCharacters(query, page) {
+  try {
+    const response = await fetch(`${BASE_URL}/character/?name=${query}&page=${page}`);
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Error searching characters:", error);
+    throw error;
+  }
+}
+
